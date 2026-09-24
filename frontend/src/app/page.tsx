@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import {api, Problem} from '@/lib/api';
+export const dynamic = 'force-dynamic';
+export default async function Home(){const problems=await api<Problem[]>('/problems');return <main className="container"><section className="hero"><div className="eyebrow">LLD practice loop</div><h1>Design it. Explain it. Learn from the trade-offs.</h1><p>Practice focused low-level design problems, submit your reasoning, and get explainable rubric-based feedback instead of a mystery score.</p></section><div className="grid">{problems.map(p=><article className="card" key={p.id}><span className="status">{p.difficulty}</span><h3>{p.title}</h3><p className="muted">{p.description}</p><div className="chips">{p.tags.map(t=><span className="chip" key={t}>{t}</span>)}</div><Link className="btn" href={`/problems/${p.id}`}>View problem →</Link></article>)}</div></main>}
