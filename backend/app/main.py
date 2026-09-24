@@ -6,7 +6,17 @@ from uuid import uuid4
 from datetime import datetime, timezone
 
 app = FastAPI(title="LLD Practice API", version="0.1.0")
-app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "https://frontend-alpha-tawny-oudesh1t0j.vercel.app",
+        "https://lld-practice-platform-rho.vercel.app",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 PROBLEMS = [
     {
